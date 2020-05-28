@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>pruebaCamara</title>
+	<meta charset="utf-8">
+	<style>
+	#camera{
+		width:350px;
+		height: 263px;
+		border:1px solid black;
+	}
+
+	/*del blog*/
+	body {
+    background: #333;
+    }
+
+    #main {
+        margin-top: 100px;
+        text-align: center;
+    }
+
+    #canvas {
+        background-color: #000;
+        /*height: 600px;
+        width: 800px;*/
+        height: 263px;
+        width: 350px;
+    }
+    #canvas2 {
+        background-color: #000;
+        /*height: 600px;
+        width: 800px;*/
+        height: 263px;
+        width: 350px;
+    }
+
+	</style>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+	<div id="camera"></div>
+	<button onclick="take_snapshot()">Tomar foto</button>
+	<button onclick="arreglo()">Obtener Arreglo</button>
+	<div id="results"></div>
+	<div id="resultsGray"></div>
+	<div id="main">
+            <canvas id="canvas" width="350" height="256"></canvas>
+            <br>
+            <!--<button onclick="arreglo()">Obtener Arreglo</button>-->
+            <br>
+            <br>
+            <canvas id="canvas2" width="350" height="256"></canvas>
+   </div>
+
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
+	<script>
+		 Webcam.set({
+		 	width:350,
+		 	height:263,
+		 	image_format:'jpg',
+		 	jpg_quality:100
+		 })
+		 Webcam.attach("#camera");
+
+		 function take_snapshot(){
+		 	Webcam.snap(function(data_uri){
+		 		document.getElementById('results').innerHTML='<img id="imagen" src="'+data_uri+'"/>';
+		 		/**/
+		 		 var canvas = document.getElementById( 'canvas' );
+		        context = canvas.getContext( '2d' );
+		 		 //loadPicture = function () {
+				    var imageObj = new Image();
+				    var x = document.getElementById("imagen").src;
+				    imageObj.src = x;
+				 
+				    imageObj.onload = function () {
+				        context.drawImage( imageObj, 0, 0 );
+				    }
+
+				    
+				//};
+
+		 	});
+		 }
+
+		 function arreglo(){
+		 	Webcam.snap(function(data_uri2){
+			 		document.getElementById('resultsGray').innerHTML='<img id="imagenGray" src="'+data_uri2+'"/>';//en el div de resultados poner una imagen que es la captura de la cámara
+			 		/**/
+			 		var canvas2 = document.getElementById( 'canvas2' ); //capturar el canvas
+			        context2 = canvas2.getContext( '2d' ); //decirle que el canvas es 2d
+		 		 	//loadPicture = function () {
+				    var imageObjG = new Image();//crear una nueva variable de tipo imagen
+				    var n = document.getElementById("imagenGray").src;//capturar el src de la imagen que acabamos de crear (la captura de la cámara)
+				    imageObjG.src = n; //igualar el src de la variable de tipo imagen a el src de la captura de la cámara
+				 
+				    imageObjG.onload = function () {
+				        context2.drawImage( imageObjG, 0, 0 );//imagen que se está dibujando, coordenadas de dónde empieza a dibujar
+				    }
+
+				    //Listas de datos para almacenar los colores que hay en cada centro (celda) por Canal 
+				    var arregloListaR = new Array(64);
+				    var arregloListaG = new Array(64);
+				    var arregloListaB = new Array(64);
+
+				    
+
+				    //arreglo de 8x8 que representa el tablero de juego. Los valores que debe contener están entre 0 y 3. El valor de cada celda depende de lo que hay en ella, se especifica abajo
+				    
+				    //0 = rojo ->ficha de la máquina
+				    //1 = azul ->ficha del contrincante
+				    //2 = verde ->celda de la máquina
+				    //3 = negro ->celda del contrincante
+
+				    var Tablero = [
+				    [5,5,5,5,5,5,5,5],
+				    [5,5,5,5,5,5,5,5],
+				    [5,5,5,5,5,5,5,5],
+				    [5,5,5,5,5,5,5,5],
+				    [5,5,5,5,5,5,5,5],
+				    [5,5,5,5,5,5,5,5],
+				    [5,5,5,5,5,5,5,5],
+				    [5,5,5,5,5,5,5,5]
+				    ];
+				    
+				    	var imageData = context2.getImageData( 0, 0, canvas2.width, canvas2.height ),
+
+					    //var imageData = app.getImgData(),
+				        pixels = imageData.data,
+				        numPixels = imageData.width * imageData.height;
+						console.log(imageData);
+					 	console.log(pixels[0]);
+
+					 	var horizontal=1; //se itera cada vez que algun valor del arreglo es conocido
+					 	var vertical=1;
+					 	var contador=1;
+					 	var miArreglo=0;//iterador para almacenar los datos en el arregloLista
+
+					    for ( var i = 0; i < numPixels; i++ ) {
+
+					        if(i==3521+horizontal)//obteniendo los centros de todas las celdas
+					        {
+					       
+					        //llenar los centros de cada celda, por canal
+					        arregloListaR[miArreglo]=pixels[ i * 4 ];
+					        arregloListaG[miArreglo]=pixels[ i * 4 + 1 ];
+							arregloListaB[miArreglo]=pixels[ i * 4 + 2 ];
+
+					        horizontal+=44;
+					        vertical++;
+
+						        if(vertical==(8*contador))
+						        	{
+						        	horizontal+=11593;
+						        	contador++;
+						       		}
+
+						    miArreglo++;
+					        }
+
+					        if(i==3834)//el octavo centro de celda no está siendo optenido por los if anteriores
+					        {
+							//llenar los centros de cada celda, por canal
+					        arregloListaR[miArreglo]=pixels[ i * 4 ];
+					        arregloListaG[miArreglo]=pixels[ i * 4 + 1 ];
+							arregloListaB[miArreglo]=pixels[ i * 4 + 2 ];
+ 							miArreglo++;
+ 						
+					        }
+
+					     /* if(i>=0 && i<5000)
+					        {
+					        pixels[ i * 4 ] = 50;
+					        pixels[ i * 4 + 1 ] = 50;
+					        pixels[ i * 4 + 2 ] = 50;
+					        }*/
+					        
+					    }
+					 
+					    context2.putImageData( imageData, 0, 0 );//trabajar con el context inicial que es el que ya está cargado 
+
+					    console.log(arregloListaR);
+					    console.log(arregloListaG);
+					    console.log(arregloListaB);
+
+					    //variables para llenar el tablero
+					    var m=0;
+					    var n=0;
+
+					    //variable ayudante para llenar el tablero
+					    var k=1;
+
+					    //for para identificar el color de cada celda
+					    for(var t=0; t<64; t++)
+					    {
+					    	var valorCelda=5; //este es el valor que va a ir en cada celda
+
+					    	//comparar los colores para saber cual color está en esa celda
+					    	
+
+					    	/*if(arregloListaR[t]>=80)
+					    		valorCelda=0; //rojo
+
+					    	if(arregloListaG[t]>=80)
+					    		valorCelda=2; //verde
+
+					    	if(arregloListaB[t]>=80)
+					    		valorCelda=1; //azul
+
+					    	if(arregloListaR[t] <= 60 && arregloListaG[t] <= 60 && arregloListaB[t] <= 60)
+					    		valorCelda=3; //negro*/
+
+					    	//comparando por el mayor 
+
+					    	if( arregloListaR[t]>arregloListaG[t] && arregloListaR[t]>arregloListaB[t] && arregloListaR[t]>=80)
+					    	{
+					    		valorCelda=0; //rojo
+					    	}
+
+					    	if( arregloListaG[t]>arregloListaR[t] && arregloListaG[t]>arregloListaB[t] && arregloListaG[t]>=80){
+					    		valorCelda=2; //verde
+					    	}
+
+					    	if( arregloListaB[t]>arregloListaR[t] && arregloListaB[t]>arregloListaG[t] && arregloListaB[t]>=80){
+					    		valorCelda=1; //azul
+					    	}
+
+					    	if(arregloListaR[t] <=70 && arregloListaG[t] <=70 && arregloListaB[t] <=70){
+					    		valorCelda=3; //negro*/
+					    	}
+
+
+
+					    	Tablero[m][n]=valorCelda;
+					    	console.log(m+" "+" "+n);
+					    	console.log(t);
+					    	console.log(valorCelda);
+
+					    	n++;
+					    	if(t==(7*k+(k-1)))
+					    	{
+					    		n=0;
+					    		m++;
+					    		k++;
+					    	}
+
+					    	
+
+					    }
+
+
+					    console.log(Tablero);
+
+					
+
+		 	});
+		 }
+		
+
+		/*function arreglo(){
+
+			var arreglo = [
+					[0,0,0,0,0,0,0,0],
+					[0,0,0,0,0,0,0,0],
+					[0,0,0,0,0,0,0,0],
+					[0,0,0,0,0,0,0,0],
+					[0,0,0,0,0,0,0,0],
+					[0,0,0,0,0,0,0,0],
+					[0,0,0,0,0,0,0,0],
+					[0,0,0,0,0,0,0,0]
+					];
+
+			var imageData = context2.getImageData( 0, 0, canvas.width, canvas.height ),
+
+					    //var imageData = app.getImgData(),
+					        pixels = imageData.data,
+					        numPixels = imageData.width * imageData.height;
+						console.log(imageData);
+					 	console.log(pixels[0]);
+
+					    for ( var i = 0; i < numPixels; i++ ) {
+					        var r = pixels[ i * 4 ];
+					        var g = pixels[ i * 4 + 1 ];
+					        var b = pixels[ i * 4 + 2 ];
+					 
+					        var grey = ( r + g + b ) / 3;
+
+					        pixels[ i * 4 ] = grey;
+					        pixels[ i * 4 + 1 ] = grey;
+					        pixels[ i * 4 + 2 ] = grey;
+					        //console.log(i);
+
+					        if(i>=0 && i<5000)
+					        {
+					        pixels[ i * 4 ] = 50;
+					        pixels[ i * 4 + 1 ] = 50;
+					        pixels[ i * 4 + 2 ] = 50;
+					        }
+
+					        
+					    }
+					 
+					    context.putImageData( imageData, 0, 0 );//trabajar con el context inicial que es el que ya está cargado 
+
+		}*/
+
+	</script>
+</body>
+</html>
