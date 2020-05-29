@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Damas Imagenes IA</title>
+	<meta charset="utf-8">
+   
+    <link  rel="icon"   href="damas.png" type="image/png" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="estilos.css">
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="raw">
+            <div class="col-12">
+                <h1 class="centrar titulo">DAMAS</h1>
+                <h4 class="centrar">El clásico juego de las damas</h4>
+                <h4 class="centrar">Inteligencia Artificial & Procesamiento de imágenes</h4>
+            </div>
+            <div class="col-12">
+                <h4 class="centrar subtitulo ganale">¡Gánale a la máquina!</h4>
+            </div>
+             
+        </div>
+
+        <div class="raw foticos">
+            <div class="col-sm-12 col-md-6 col-lg-6 contieneCanvas">
+                <!--canvas de la foto con los puntos-->
+                <h3>Arriba Izquierda (4x4)</h3>
+                <canvas id="canvasArreglo1" width="350" height="256"></canvas>
+
+                <button onclick="take_snapshot1()">Tomar foto</button>
+                <button onclick="arreglo1()">SUBIR</button>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 contieneCanvas">
+                <!--canvas de la foto con los puntos-->
+                <h3>Arriba Derecha (4x4)</h3>
+                <canvas id="canvasArreglo2" width="350" height="256"></canvas>
+
+                <button onclick="take_snapshot2()">Tomar foto 2</button>
+                <button onclick="arreglo2()">SUBIR</button>
+            </div>
+        </div>
+
+        <div class="raw foticos">
+            <div class="col-sm-12 col-md-12 col-lg-12 contieneCanvas miFotico subtitulo" style="justify-items: center;">
+                <!--div para lo que se ve en tiempo real en la cámara-->
+                <h4>CÁMARA</h4>
+                <div id="camera"></div>
+            </div>        
+        </div>
+
+        
+
+         <div class="raw foticos">
+            <div class="col-sm-12 col-md-6 col-lg-6 contieneCanvas">
+                <!--canvas de la foto con los puntos-->
+                <h3>Abajo Izquierda (4x4)</h3>
+                <canvas id="canvasArreglo3" width="350" height="256"></canvas>
+
+                <button onclick="take_snapshot3()">Tomar foto 3</button>
+                <button onclick="arreglo3()">SUBIR</button>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 contieneCanvas">
+                <!--canvas de la foto con los puntos-->
+                <h3>Abajo Derecha (4x4)</h3>
+                <canvas id="canvasArreglo4" width="350" height="256"></canvas>
+
+                <button onclick="take_snapshot4()">Tomar foto 4</button>
+                <button onclick="arreglo4()">SUBIR</button>
+            </div>
+        </div>
+
+        <div class="raw d-flex justify-content-center">
+            <div class="col-12 botonPro">
+                <button onclick="granArreglo()">SUBIR COMPLETO</button>
+            </div>
+        </div>
+
+        <div class="row justify-content-center" style="padding-top: 2em;">
+            <div class="grid-container">
+                <div class="grid-item item1">1</div>
+                <div class="grid-item item2">2</div>
+                <div class="grid-item item3">3</div>  
+                <div class="grid-item item4">4</div>
+                <div class="grid-item item5">5</div>
+                <div class="grid-item item6">6</div>
+                <div class="grid-item item7">7</div>
+                <div class="grid-item item8">8</div>  
+                <div class="grid-item item9">9</div>
+                <div class="grid-item item10">10</div>
+                <div class="grid-item item11">11</div>
+                <div class="grid-item item12">12</div>
+                <div class="grid-item item13">13</div>  
+                <div class="grid-item item14">14</div>
+                <div class="grid-item item15">15</div>
+                <div class="grid-item item16">16</div>
+                <div class="grid-item item17">17</div>
+                <div class="grid-item item18">18</div>  
+                <div class="grid-item item19">19</div>
+                <div class="grid-item item20">20</div>
+                <div class="grid-item item21">21</div>
+                <div class="grid-item item22">22</div>
+                <div class="grid-item item23">23</div>  
+                <div class="grid-item item24">24</div>
+                <div class="grid-item item25">25</div>
+                <div class="grid-item item26">26</div>
+                <div class="grid-item item27">27</div>
+                <div class="grid-item item28">28</div>  
+                <div class="grid-item item29">29</div>
+                <div class="grid-item item30">30</div>
+                <div class="grid-item item31">31</div>
+                <div class="grid-item item32">32</div>
+                <div class="grid-item item33">33</div>  
+                <div class="grid-item item34">34</div>
+                <div class="grid-item item35">35</div>
+                <div class="grid-item item36">36</div>
+                <div class="grid-item item37">37</div>
+                <div class="grid-item item38">38</div>  
+                <div class="grid-item item39">39</div>
+                <div class="grid-item item40">40</div>
+                <div class="grid-item item41">41</div>
+                <div class="grid-item item42">42</div>
+                <div class="grid-item item43">43</div>  
+                <div class="grid-item item44">44</div>
+                <div class="grid-item item45">45</div>
+                <div class="grid-item item46">46</div>
+                <div class="grid-item item47">47</div>
+                <div class="grid-item item48">48</div>  
+                <div class="grid-item item49">49</div>
+                <div class="grid-item item50">50</div>
+                <div class="grid-item item51">51</div>
+                <div class="grid-item item52">52</div>
+                <div class="grid-item item53">53</div>  
+                <div class="grid-item item54">54</div>
+                <div class="grid-item item55">55</div>
+                <div class="grid-item item56">56</div>
+                <div class="grid-item item57">57</div>
+                <div class="grid-item item58">58</div>  
+                <div class="grid-item item59">59</div>
+                <div class="grid-item item60">60</div>
+                <div class="grid-item item61">61</div>
+                <div class="grid-item item62">62</div>
+                <div class="grid-item item63">63</div>  
+                <div class="grid-item item64">64</div>
+            </div>
+        </div>
+    </div>
+
+   
+	
+
+    <!--resultados de la primera foto-->
+    <div id="results" style="display: none;"></div>
+    <div id="results1" style="display: none;"></div>
+    <div id="results2" style="display: none;"></div>
+    <div id="results3" style="display: none;"></div>
+    <div id="results4" style="display: none;"></div>
+ <!--canvas de la primera foto-->
+    <canvas id="canvas" width="350" height="256" style="display: none;"></canvas>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
+
+    <!--script para usar el tablero como una variable global-->
+    <script type="text/javascript">
+        var granTablero = [
+        [5,5,5,5,5,5,5,5],
+        [5,5,5,5,5,5,5,5],
+        [5,5,5,5,5,5,5,5],
+        [5,5,5,5,5,5,5,5],
+        [5,5,5,5,5,5,5,5],
+        [5,5,5,5,5,5,5,5],
+        [5,5,5,5,5,5,5,5],
+        [5,5,5,5,5,5,5,5]
+        ];
+    </script>
+    
+    <!--script para el procesamiento de la imagen usando la cámara para tomar fotos al tablero-->
+    <script type="text/javascript" src="camara.js"></script>
+   </body>
+</html>

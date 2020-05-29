@@ -1,0 +1,140 @@
+#camera{
+        width:350px;
+        height: 263px;
+        border:1px solid black;
+    }
+
+    #canvas {
+        background-color: #000;
+        /*height: 600px;
+        width: 800px;*/
+        height: 263px;
+        width: 350px;
+    }
+    #canvasArreglo1 {
+        background-color: #000;
+        /*height: 600px;
+        width: 800px;*/
+        height: 263px;
+        width: 350px;
+    }
+
+    #canvasArreglo2 {
+        background-color: #000;
+        /*height: 600px;
+        width: 800px;*/
+        height: 263px;
+        width: 350px;
+    }
+
+    #canvasArreglo3 {
+        background-color: #000;
+        /*height: 600px;
+        width: 800px;*/
+        height: 263px;
+        width: 350px;
+    }
+
+    #canvasArreglo4 {
+        background-color: #000;
+        /*height: 600px;
+        width: 800px;*/
+        height: 263px;
+        width: 350px;
+    }
+
+    .centrar{
+        text-align: center;
+    }
+
+    .camarita{
+        display: flex;
+        justify-content: center;
+    }
+
+    .contieneCanvas{
+        display: inline-grid;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .miFotico{
+        justify-items: center;
+        padding-bottom: 2em;
+    }
+
+    .titulo{
+        padding-top: 2em;
+        font-weight: bolder;
+    }
+
+    .subtitulo{
+        padding-top: 2em;
+        font-weight: bold;
+    }
+    
+    .ganale{
+        text-transform: uppercase;
+        padding-bottom: 1.5em;
+    }
+    .foticos{
+        display: flex;
+    }
+
+    .botonPro{
+        text-align: center;
+        padding-top: 1.5em;
+    }
+
+    .grid-container {
+  display: grid;
+  grid-gap: 5px;
+  background-color: #979797#00b926;
+  padding: 5px;
+}
+
+.grid-item {
+  background-color: #00b926;
+  text-align: center;
+  padding: 10px;
+}
+
+.item1 {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.item2 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.item3 {
+  grid-column:  3;
+  grid-row: 1;
+}
+
+.item4 {
+  grid-column:  4;
+  grid-row: 1;
+}
+
+.item5 {
+  grid-column:  5;
+  grid-row: 1;
+}
+
+.item6 {
+  grid-column:  6;
+  grid-row: 1;
+ }
+ 
+ .item7 {
+  grid-column:  7;
+  grid-row: 1;
+}
+
+ .item8 {
+  grid-column:  8;
+  grid-row: 1;
+}
