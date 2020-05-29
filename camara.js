@@ -628,5 +628,37 @@
 
 		 function granArreglo(){
 		 	console.log(granTablero);
+
+		 	var miCelda=1;//acumulador para colorear las celdas
+
+		 	//for para recorrer granTablero y colorearlo en el DOM
+		 	for(var i=0; i<8; i++)
+		 	{
+		 		for(var j=0; j<8; j++)
+		 		{
+
+		 			switch(granTablero[i][j]) {
+						  case 0:
+						    $('.grid-item:nth-child('+miCelda+')').children().css("background-color", "#ff2727cf");
+						    break;
+						  case 1:
+						    $('.grid-item:nth-child('+miCelda+')').children().css("background-color", "#312affcf");
+						    break;
+						  default:
+						    $('.grid-item:nth-child('+miCelda+')').children().css("background-color", "#fff0");
+						} 
+
+						miCelda++;
+		 		}
+		 	}
+
+		 	//var contenedor = $('.grid-container');
+
+		 	//$('.grid-item:nth-child(2)').children().css("background-color", "yellow");
+
+		 	//$('.grid-container').children(1).children().css("background-color", "yellow");
+
+		 	//$(".grid-container:nth-child(1):nth-child(1)").css("background-color", "yellow");
+
 		 }
 		 
