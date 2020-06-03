@@ -14,12 +14,12 @@
     <div class="container">
         <div class="raw">
             <div class="col-12">
-                <h1 class="centrar titulo" id="titulo">DAMAS</h1>
+                <h1 class="centrar titulo verdecito" id="titulo">DAMAS</h1>
                 <h4 class="centrar">El clásico juego de las damas</h4>
                 <h4 class="centrar">Inteligencia Artificial & Procesamiento de imágenes</h4>
             </div>
             <div class="col-12">
-                <h4 class="centrar subtitulo ganale">¡Gánale a la máquina!</h4>
+                <h4 class="centrar subtitulo ganale verdecito">¡Gánale a la máquina!</h4>
             </div>
              
         </div>
@@ -30,16 +30,16 @@
                 <h3>Arriba Izquierda (4x4)</h3>
                 <canvas id="canvasArreglo1" width="350" height="256"></canvas>
 
-                <button onclick="take_snapshot1()">Tomar foto</button>
-                <button onclick="arreglo1()">SUBIR</button>
+                <button onclick="take_snapshot1()" class="botonFoto">Tomar foto</button>
+                <button onclick="arreglo1()" class="subir">SUBIR</button>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6 contieneCanvas">
                 <!--canvas de la foto con los puntos-->
                 <h3>Arriba Derecha (4x4)</h3>
                 <canvas id="canvasArreglo2" width="350" height="256"></canvas>
 
-                <button onclick="take_snapshot2()">Tomar foto 2</button>
-                <button onclick="arreglo2()">SUBIR</button>
+                <button onclick="take_snapshot2()" class="botonFoto">Tomar foto</button>
+                <button onclick="arreglo2()" class="subir">SUBIR</button>
             </div>
         </div>
 
@@ -59,22 +59,22 @@
                 <h3>Abajo Izquierda (4x4)</h3>
                 <canvas id="canvasArreglo3" width="350" height="256"></canvas>
 
-                <button onclick="take_snapshot3()">Tomar foto 3</button>
-                <button onclick="arreglo3()">SUBIR</button>
+                <button onclick="take_snapshot3()" class="botonFoto">Tomar foto</button>
+                <button onclick="arreglo3()" class="subir">SUBIR</button>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6 contieneCanvas">
                 <!--canvas de la foto con los puntos-->
                 <h3>Abajo Derecha (4x4)</h3>
                 <canvas id="canvasArreglo4" width="350" height="256"></canvas>
 
-                <button onclick="take_snapshot4()">Tomar foto 4</button>
-                <button onclick="arreglo4()">SUBIR</button>
+                <button onclick="take_snapshot4()" class="botonFoto">Tomar foto</button>
+                <button onclick="arreglo4()" class="subir">SUBIR</button>
             </div>
         </div>
 
         <div class="raw d-flex justify-content-center">
             <div class="col-12 botonPro">
-                <button onclick="granArreglo()">SUBIR COMPLETO</button>
+                <button onclick="granArreglo()" class="completo">SUBIR COMPLETO</button>
             </div>
         </div>
 
@@ -149,13 +149,13 @@
 
         <div class="row confirmaTablero">
             <div class="col-12 pregunta">
-                <h3 class="subtitulo">¿Este es tu tablero?</h3>
+                <h3 class="subtitulo verdecito">¿Este es tu tablero?</h3>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6 juguemos">
-                <button id="tableroAprobado" onclick="minimaxPoda();">Sí, ¡Juguemos!</button>
+                <button id="tableroAprobado" onclick="minimaxPoda();" class="siJuguemos">Sí, ¡Juguemos!</button>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6 volverFotos">
-                <a href="#canvasArreglo1" id="tableroNegado">No, Volver a tomar fotos</a>
+                <a href="#canvasArreglo1" id="tableroNegado" class="negado">No, Volver a tomar fotos</a>
             </div>            
         </div>
     </div>

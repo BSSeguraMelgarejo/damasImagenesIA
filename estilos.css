@@ -905,3 +905,74 @@
     display: flex;
     justify-content: center;
 }
+
+.botonFoto{
+border: none;
+max-width: 60%;
+text-align: center;
+color: white;
+background: #008000ab;
+align-self: center;
+padding: 0.3em 4em;
+margin: 0.4em auto;
+
+transition: background, 0.3s;
+}
+
+.botonFoto:hover{
+  background:green;
+}
+
+.subir{
+  color: white;
+background: #2e7d02e0;
+padding: 0.2em 5em;
+margin: 0 auto;
+border: none;
+font-weight: bold;
+transition: background, 0.3s;
+}
+
+.subir:hover{
+background-color: green;
+}
+
+.completo{
+color: white;
+background: #2e7d02e0;
+padding: 0.6em 5em;
+margin: 0 auto;
+border: none;
+font-weight: bold;
+transition: background, 0.3s;
+}
+
+.completo:hover{
+background-color: green;
+}
+
+.siJuguemos{
+  color: white;
+background: #2e7d02e0;
+padding: 0.4em 4em;
+margin: 0 auto;
+border: none;
+font-weight: bold;
+transition: background, 0.3s;
+}
+
+.siJuguemos:hover{
+background-color: green;
+}
+
+.negado{
+text-align: center;
+padding: 0.5em 2em;
+border: solid;
+}
+
+.verdecito{
+  color: green;
+    text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);
+
+}
